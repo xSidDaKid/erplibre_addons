@@ -15,7 +15,7 @@ ERPLibreBase
 """,
     'depends': [
         # Custom ERPLibre
-        'erplibre_base',
+        'erplibre_base_enterprise',
 
         'res_partner_fix_group_by_company',
         'crm_filter_all',

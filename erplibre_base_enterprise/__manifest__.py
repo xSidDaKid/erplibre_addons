@@ -58,6 +58,16 @@ ERPLibreBase
         'sale_management',
         'stock',
 
+        # Muk
+        'muk_utils',
+        'muk_branding',
+        'muk_hr_utils',
+        'muk_mail_branding',
+        'muk_web_branding',
+        'muk_web_theme_mail',
+        'muk_web_utils',
+        'muk_website_branding',
+
         # OCA
         'website_form_builder',
         'website_snippet_anchor',

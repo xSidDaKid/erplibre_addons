@@ -26,6 +26,9 @@ ERPLibreBase
         'website_odoo_debranding',
         'website_no_crawler',
 
+        # Muk
+        'muk_web_theme',
+
         # Server-tools
         'fetchmail_notify_error_to_sender',
 

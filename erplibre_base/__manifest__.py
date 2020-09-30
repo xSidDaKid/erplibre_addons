@@ -40,6 +40,8 @@ ERPLibre base
         # Partner
         'partner_quebec_tz',
 
+        # ERPLibre
+        'erplibre_info',
     ],
     'data': [],
     'installable': True,

@@ -1,48 +1,42 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'ERPLibre base',
-    'version': '12.0.1.0.0',
-    'author': "TechnoLibre",
-    'website': 'https://technolibre.ca',
-    'license': 'AGPL-3',
-    'category': 'Base',
-    'summary': 'INSTALL ERPLibre base',
-    'description': """
+    "name": "ERPLibre base",
+    "version": "12.0.1.0.0",
+    "author": "TechnoLibre",
+    "website": "https://technolibre.ca",
+    "license": "AGPL-3",
+    "category": "Base",
+    "summary": "INSTALL ERPLibre base",
+    "description": """
 ERPLibre base
 =============
 
 """,
-    'depends': [
+    "depends": [
         # Custom ERPLibre
         # OCA
-        'web_responsive',
-
+        "web_responsive",
         # OCA server-brand
-        'disable_odoo_online',
-        'remove_odoo_enterprise',
-
+        "disable_odoo_online",
+        "remove_odoo_enterprise",
         # Muk
-        'muk_web_theme',
-        'muk_utils',
-        'muk_branding',
-        'muk_mail_branding',
-        'muk_web_branding',
-        'muk_web_theme_mail',
-        'muk_web_utils',
-
+        "muk_web_theme",
+        "muk_utils",
+        "muk_branding",
+        "muk_mail_branding",
+        "muk_web_branding",
+        "muk_web_theme_mail",
+        "muk_web_utils",
         # Server-tools
-        'fetchmail_notify_error_to_sender',
-
+        "fetchmail_notify_error_to_sender",
         # Social
-        'mail_debrand',
-
+        "mail_debrand",
         # Partner
-        'partner_quebec_tz',
-
+        "partner_quebec_tz",
         # ERPLibre
-        'erplibre_info',
+        "erplibre_info",
     ],
-    'data': [],
-    'installable': True,
+    "data": [],
+    "installable": True,
 }

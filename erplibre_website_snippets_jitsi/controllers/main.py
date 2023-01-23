@@ -46,14 +46,17 @@ class WebsiteJitsi(http.Controller):
         }
 
     @http.route(
-        ["/website_jitsi/get_canal_list/"], type="json", auth="public", website=True
+        ["/website_jitsi/get_canal_list/"],
+        type="json",
+        auth="public",
+        website=True,
     )
     def get_canal_list(self):
 
         meetings = (
             request.env["sinerkia_jitsi_meet.jitsi_meet"]
-                .sudo()
-                .search([("name", "!=", None)])
+            .sudo()
+            .search([("name", "!=", None)])
         )
         lst_canal = []
         for meeting in meetings:
@@ -62,7 +65,7 @@ class WebsiteJitsi(http.Controller):
                 "roomName": urlparse(meeting.url).path.replace("/", ""),
                 "domaineName": "meet.jit.si",
                 "url": meeting.url,
-                "id": meeting.id
+                "id": meeting.id,
             }
             lst_canal.append(dct_canal_info)
 

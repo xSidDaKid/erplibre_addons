@@ -20,7 +20,7 @@ class AlimentController(http.Controller):
             {'name': 'Aliment 3'},
         ]
         #return request.render('aliment.s_aliment', {'aliments': aliments})
-        return {"aliment_1":"viande", "aliment_2":"fruit"}
+        return {"aliments":["viande", "legume","fruit"]}
 
     @http.route(
         '/creer_alliment',

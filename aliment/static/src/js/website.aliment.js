@@ -24,7 +24,7 @@ function (require) {
                     }
 
                     self._$loadedContent = $(data);
-                    self._eventList.text(data["aliment_1"]);
+                    self._eventList.text(data["aliments"]);
                 });
 
                 return $.when(this._super.apply(this, arguments), def);

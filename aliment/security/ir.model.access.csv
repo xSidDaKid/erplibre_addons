@@ -1,2 +1,2 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_liste_aliment,access_liste_aliment,model_access_liste_aliment,,1,1,1,1
+access_aliment_liste,access_aliment_liste,model_aliment_liste,base.group_user,1,1,1,1

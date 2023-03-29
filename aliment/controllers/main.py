@@ -5,24 +5,29 @@ from odoo.http import request
 class AlimentController(http.Controller):
 
     @http.route(
+        ['/listeAliment'],
+        type="json",
+        auth="public",
+        website=True,
+        methods=["POST", "GET"],
+        csrf=False,
+    )
+    def getAllAliment(self):
+        #aliments = request.env['aliment.liste'].sudo().search([])
+        aliments = [
+            {'name': 'Aliment 1'},
+            {'name': 'Aliment 2'},
+            {'name': 'Aliment 3'},
+        ]
+        #return request.render('aliment.s_aliment', {'aliments': aliments})
+        return {"aliment_1":"viande", "aliment_2":"fruit"}
+
+    @http.route(
         '/creer_alliment',
         type="http",
         auth="public",
         website=True,
     )
-    def creerAliment(self, **post):
-        aliment = request.env['liste.aliment'].create({'name' : post.get('name')})
-
-    @http.route(
-        '/get_all',
-        type="http",
-        auth="public",
-        website=True,
-    )
-    def creerAliment(self, **post):
-        unAliment = http.request.env['aliment.liste']
-        aliment_ids = unAliment.search([])
-        items = unAliment.browse(aliment_ids)
-        return http.request.render('my_module.item_list_template', {'items': items})
-
+    def ajouterAliment(self, **post):
+        http.request.env['aliment.liste'].sudo().create({'name': post.get('name')})
 

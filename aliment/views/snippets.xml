@@ -20,34 +20,33 @@
                     </div>
                 </section>
                 -->
-                <form id="my-form">
+                <form id="creer">
                     <label for="fname">Name:</label><br/>
                     <input type="text" name="name" id="name"/>
-                    <button type="submit" id="submit-btn">Submit</button>
+                    <button type="submit" id="submit-btn">Ajouter</button>
                 </form>
 
                 <hr></hr>
 
-                <hr></hr>
                 <h1>Liste des aliments</h1>
+
                 <div class="aliment_value"></div>
 
+                <hr></hr>
 
-                    <!--<ul class="aliment_value">
-                        <t t-if="aliment_snippet_value">
-                            <t t-foreach="aliments" t-as="aliment">
-                                <li><t t-esc="aliment.name"/></li>
-                            </t>
-                        </t>
-                        <t t-else="">
-                            <li>No aliments found</li>
-                        </t>
-                    </ul>-->
+                <h1>Modifier un aliment</h1>
+                <form id="modifier">
+                    <label for="id">ID:</label><br/>
+                    <input type="number" name="new_id" id="new_id" /><br/><br/>
+
+                    <label for="new_name">Name:</label><br/>
+                    <input type="text" name="new_name" id="new_name"/>
+
+                    <button type="submit" id="submit-btn">Modifer</button>
+                </form>
             </div>
         </section>
     </template>
-
-
 
     <!-- Add snippets to menu -->
     <template id="snippet_effect" inherit_id="website.snippets">

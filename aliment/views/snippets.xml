@@ -6,24 +6,43 @@
         <section class="o_aliment">
             <div class="container">
                 <h1>Aliment</h1>
+                <!--
                 <form action="/creer_alliment" method="POST">
                     <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
                     <label for="fname">Name:</label><br/>
                     <input type="text" id="name" name="name"/><br/>
                     <input type="submit" value="Submit"/>
                 </form>
-
                 <hr></hr>
                  <section class="o_aliment">
                     <div class="container">
                         <div class="aliment_value">Hello</div>
                     </div>
                 </section>
+                -->
+                <form id="my-form">
+                    <label for="fname">Name:</label><br/>
+                    <input type="text" name="name" id="name"/>
+                    <button type="submit" id="submit-btn">Submit</button>
+                </form>
+
+                <hr></hr>
+                <template>
+                <section class="aliment_value">
+                    <div class="container aliment_value"></div>
+                </section>
+                </template>
                 <hr></hr>
                 <h1>Liste des aliments</h1>
-                <h2 class="o_aliment"></h2>
-                    <ul class="aliment_snippet_value">
-                        <t t-if="aliments">
+                <div>
+                    <div class="aliment_value">
+                        <div class="row mt16 mb16"></div>
+
+                    </div>
+                    <hr></hr>
+
+                    <ul class="aliment_value">
+                        <t t-if="aliment_snippet_value">
                             <t t-foreach="aliments" t-as="aliment">
                                 <li><t t-esc="aliment.name"/></li>
                             </t>
@@ -32,6 +51,7 @@
                             <li>No aliments found</li>
                         </t>
                     </ul>
+                </div>
             </div>
         </section>
     </template>

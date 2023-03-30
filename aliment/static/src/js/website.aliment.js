@@ -24,12 +24,19 @@ function (require) {
                     if (_.isEmpty(data)) {
                         return;
                     }
+                    var list = $("<ul>");
+                    _.each(data.aliments, function (item) {
+                        list.append($("<li>").text(item));
+                    });
 
-                    self._$loadedContent = $(data);
+                    self._eventList.html(list);
+                    //console.log(data);
+                    //self._$loadedContent = $(data);
                     //self._eventList.text(data["aliments"]);
-                    self._eventList.replaceWith(self._$loadedContent);
+                    //self._eventList.replaceWith(self._$loadedContent);
                 });
 
+                //Création
                 var ajax = require('web.ajax');
 
                 $('#my-form').on('submit', function (ev) {
@@ -42,6 +49,7 @@ function (require) {
                 }).then(function (result) {
                   // handle the result of the RPC call here
                   console.log(result);
+                  location.reload();
                 });
                 });
 

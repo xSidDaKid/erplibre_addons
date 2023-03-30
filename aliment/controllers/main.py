@@ -5,7 +5,7 @@ from odoo.http import request
 class AlimentController(http.Controller):
 
     @http.route(
-        ['/listeAliment'],
+        '/listeAliment',
         type="json",
         auth="public",
         website=True,

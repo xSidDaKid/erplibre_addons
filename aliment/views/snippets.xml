@@ -27,21 +27,13 @@
                 </form>
 
                 <hr></hr>
-                <template>
-                <section class="aliment_value">
-                    <div class="container aliment_value"></div>
-                </section>
-                </template>
+
                 <hr></hr>
                 <h1>Liste des aliments</h1>
-                <div>
-                    <div class="aliment_value">
-                        <div class="row mt16 mb16"></div>
+                <div class="aliment_value"></div>
 
-                    </div>
-                    <hr></hr>
 
-                    <ul class="aliment_value">
+                    <!--<ul class="aliment_value">
                         <t t-if="aliment_snippet_value">
                             <t t-foreach="aliments" t-as="aliment">
                                 <li><t t-esc="aliment.name"/></li>
@@ -50,8 +42,7 @@
                         <t t-else="">
                             <li>No aliments found</li>
                         </t>
-                    </ul>
-                </div>
+                    </ul>-->
             </div>
         </section>
     </template>
@@ -62,25 +53,25 @@
     <template id="snippet_effect" inherit_id="website.snippets">
         <xpath expr="//div[@id='snippet_structure']/div[hasclass('o_panel_body')]" position="inside">
             <t
-                t-snippet="aliment.s_aliment"
-                t-thumbnail="/aliment/static/description/icon.png"
+                    t-snippet="aliment.s_aliment"
+                    t-thumbnail="/aliment/static/description/icon.png"
             />
         </xpath>
     </template>
 
     <!-- Add stylesheet and Javascript -->
-   <template id="assets_frontend" inherit_id="website.assets_frontend">
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
         <xpath expr="//link[last()]" position="after">
             <link
-                rel="stylesheet"
-                type="text/scss"
-                href="/aliment/static/src/scss/demo_aliment.scss"
+                    rel="stylesheet"
+                    type="text/scss"
+                    href="/aliment/static/src/scss/demo_aliment.scss"
             />
         </xpath>
         <xpath expr="//script[last()]" position="after">
             <script
-                type="text/javascript"
-                src="/aliment/static/src/js/website.aliment.js"
+                    type="text/javascript"
+                    src="/aliment/static/src/js/website.aliment.js"
             />
         </xpath>
     </template>

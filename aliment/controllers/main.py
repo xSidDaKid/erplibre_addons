@@ -14,9 +14,6 @@ class AlimentController(http.Controller):
     )
     def getAllAliment(self):
         aliments = request.env['aliment.liste'].sudo().search([])
-        #return request.render('aliment.s_aliment', {'aliments': aliments})
-        #return {"aliments":["viande", "legume","fruit"]}
-        #aliment_names = [a.name for a in aliments]
         aliment_data = [{"id": a.id, "name": a.name} for a in aliments]
         return {"aliments": aliment_data}
 
@@ -37,13 +34,6 @@ class AlimentController(http.Controller):
         website=True
     )
     def modifier_aliment(self, **post):
-        #record = request.env['aliment.liste'].sudo().search([('name', '=', post.get('name'))])
-        # record = request.env['aliment.liste'].sudo().search([('id', '=', post.get('id'))])
-        # if record:
-        #     record.write({'name': post.get('new_name')})
-        #     return "Record modified successfully"
-        # else:
-        #     return "Record not found"
         try:
             record_id = int(post.get('new_id'))
         except ValueError:
@@ -55,3 +45,21 @@ class AlimentController(http.Controller):
             return "Record modified successfully"
         else:
             return "Record not found"
+
+    @http.route(
+        '/delete_aliment',
+        type='json',
+        auth="user",
+        website=True
+    )
+    def delete_record(self, **kw):
+        try:
+            record_id = int(kw.get('old_id'))
+        except ValueError:
+            return "Invalid ID value"
+        record = request.env['aliment.liste'].sudo().search([('id', '=', record_id)])
+        if record:
+            record.unlink()
+            return request.redirect('/')
+        else:
+            return request.render('aliment.liste.error', {'message': 'Record not found'})

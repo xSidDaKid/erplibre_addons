@@ -12,8 +12,8 @@ function (require) {
                 let self = this;
                 this._eventList = this.$(".aliment_value");
                 this._originalContent = this._eventList.text();
-                //this._originalContent = this._eventList[0].outerHTML;
 
+                //Liste Aliment
                 let def = this._rpc({
                     route: "/listeAliment",
                 }).then(function (data) {
@@ -26,7 +26,6 @@ function (require) {
                     }
                     var list = $("<ul>");
                     _.each(data.aliments, function (item) {
-                        //list.append($("<li>").text(item));
                         var listItem = $("<li>");
                         var itemText = " (ID: " + item.id + ") " + item.name;
                         listItem.text(itemText);
@@ -40,39 +39,46 @@ function (require) {
                 var ajax = require('web.ajax');
 
                 $('#creer').on('submit', function (ev) {
-                ev.preventDefault();  // prevent default form submission behavior
+                ev.preventDefault();
 
                 var name = $('#name').val();
 
                 ajax.jsonRpc('/creer_alliment', 'call', {
                   'name': name,
                 }).then(function (result) {
-                  // handle the result of the RPC call here
-                  console.log(result);
                   location.reload();
                 });
                 });
 
                 //Modifier
-
                 var ajax = require('web.ajax');
 
                 $('#modifier').on('submit', function (ev) {
-                ev.preventDefault();  // prevent default form submission behavior
+                ev.preventDefault();
 
                 var new_id = $('#new_id').val();
                 var new_name = $('#new_name').val();
-                console.log("id: = "+id+"/name: "+new_name);
                 ajax.jsonRpc('/modifier_aliment', 'call', {
                     'new_id': new_id,
                     'new_name': new_name
                 }).then(function (result) {
-                  // handle the result of the RPC call here
-                  console.log(result);
                   location.reload();
                 });
                 });
 
+                //Delete
+                var ajax = require('web.ajax');
+
+                $('#supprimer').on('submit', function (ev) {
+                ev.preventDefault();
+
+                var old_id = $('#old_id').val();
+                ajax.jsonRpc('/delete_aliment', 'call', {
+                    'old_id': old_id,
+                }).then(function (result) {
+                  location.reload();
+                });
+                });
 
                 return $.when(this._super.apply(this, arguments), def);
             },

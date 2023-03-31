@@ -4,46 +4,53 @@
     <!-- Snippets -->
     <template id="s_aliment" name="Aliment">
         <section class="o_aliment">
+            <div class="container2">
+
+                <div class="column">
+                    <h1>Ajouter un aliment</h1>
+                    <form id="creer" style="padding: 20px;">
+                        <label for="fname">Name:</label>
+                        <br/>
+                        <input type="text" name="name" id="name"/>
+                        <br></br>
+                        <br></br>
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Ajouter</button>
+                    </form>
+                </div>
+
+                <div class="column">
+                    <h1>Modifier un aliment</h1>
+                    <form id="modifier" style="padding: 20px;">
+                        <label for="id">ID:</label>
+                        <br/>
+                        <input type="number" name="new_id" id="new_id"/>
+                        <br/>
+                        <br/>
+                        <label for="new_name">Name:</label>
+                        <br/>
+                        <input type="text" name="new_name" id="new_name"/>
+                        <br></br>
+                        <br></br>
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Modifer</button>
+                    </form>
+                </div>
+
+                <div class="column">
+                    <h1>Supprimer un aliment</h1>
+                    <form id="supprimer" style="padding: 20px;">
+                        <label for="id">ID:</label>
+                        <br/>
+                        <input type="number" name="old_id" id="old_id"/>
+                        <br/>
+                        <br/>
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Supprimer</button>
+                    </form>
+                </div>
+            </div>
+
             <div class="container">
-                <h1>Aliment</h1>
-                <!--
-                <form action="/creer_alliment" method="POST">
-                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
-                    <label for="fname">Name:</label><br/>
-                    <input type="text" id="name" name="name"/><br/>
-                    <input type="submit" value="Submit"/>
-                </form>
-                <hr></hr>
-                 <section class="o_aliment">
-                    <div class="container">
-                        <div class="aliment_value">Hello</div>
-                    </div>
-                </section>
-                -->
-                <form id="creer">
-                    <label for="fname">Name:</label><br/>
-                    <input type="text" name="name" id="name"/>
-                    <button type="submit" id="submit-btn">Ajouter</button>
-                </form>
-
-                <hr></hr>
-
                 <h1>Liste des aliments</h1>
-
-                <div class="aliment_value"></div>
-
-                <hr></hr>
-
-                <h1>Modifier un aliment</h1>
-                <form id="modifier">
-                    <label for="id">ID:</label><br/>
-                    <input type="number" name="new_id" id="new_id" /><br/><br/>
-
-                    <label for="new_name">Name:</label><br/>
-                    <input type="text" name="new_name" id="new_name"/>
-
-                    <button type="submit" id="submit-btn">Modifer</button>
-                </form>
+                <div class="aliment_value">En Chargement</div>
             </div>
         </section>
     </template>

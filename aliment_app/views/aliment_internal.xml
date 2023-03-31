@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--View 1-->
+    <record id="aliment_internal_view_form" model="ir.ui.view">
+        <field name="name">aliment_internal_form</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <form id="creer" string="Titre">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                    <!--<group>
+                        <field name="model_1" />
+                    </group>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--View 2-->
+    <record id="aliment_internal_view_graph" model="ir.ui.view">
+        <field name="name">aliment_internal_graph</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <graph string="Demo model 2 internal">
+                <field name="name" type="row" />
+<!--
+                <field name="model_1" type="row" />
+-->
+            </graph>
+        </field>
+    </record>
+
+    <!--View 3-->
+    <record id="aliment_internal_view_kanban" model="ir.ui.view">
+        <field name="name">aliment_internal_kanban</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name" />
+                <!--<field name="model_1" />-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="oe_kanban_details">
+                                <ul>
+                                    <li class="mb4">
+                                        <strong>
+                                            <field name="name" />
+                                        </strong>
+                                    </li>
+                                    <!--<li class="mb4">
+                                        <strong>
+                                            <field name="model_1" />
+                                        </strong>
+                                    </li>-->
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--View 4-->
+    <record id="aliment_internal_view_pivot" model="ir.ui.view">
+        <field name="name">aliment_internal_pivot</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <pivot string="Demo model 2 internal">
+                <field name="name" type="row" />
+               <!-- <field name="model_1" type="row" />-->
+            </pivot>
+        </field>
+    </record>
+
+    <!--View 5-->
+    <record id="aliment_internal_view_search" model="ir.ui.view">
+        <field name="name">aliment_internal_search</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <search string="Demo model 2 internal">
+                <filter domain="[('name','!=',False)]" name="name" string="Name" />
+<!--
+                <filter domain="[('model_1','!=',False)]" name="model_1" string="Model 1" />
+-->
+            </search>
+        </field>
+    </record>
+
+    <!--View 6-->
+    <record id="aliment_internal_view_tree" model="ir.ui.view">
+        <field name="name">aliment_internal_tree</field>
+        <field name="model">aliment.internal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+<!--
+                <field name="model_1" />
+-->
+            </tree>
+        </field>
+    </record>
+
+    <!--User View-->
+    <act_window
+        id="aliment_internal_aliment_internal_action_window"
+        name="Aliment!"
+        res_model="aliment.internal"
+        view_mode="kanban,tree,pivot,graph,form"
+    />
+
+    <!-- Add stylesheet and Javascript -->
+    <template id="assets_frontend" inherit_id="website.assets_frontend">
+        <xpath expr="//link[last()]" position="after">
+            <link
+                    rel="stylesheet"
+                    type="text/scss"
+                    href="/aliment/static/src/scss/demo_aliment.scss"
+            />
+        </xpath>
+        <xpath expr="//script[last()]" position="after">
+            <script
+                    type="text/javascript"
+                    src="/aliment/static/src/js/website.aliment.js"
+            />
+        </xpath>
+    </template>
+</odoo>

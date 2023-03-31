@@ -32,8 +32,9 @@ function (require) {
                     self._eventList.html(list);
                 });
 
-                const handleSubmit = (endpoint, data) => {
+                const handleSubmit = (endpoint, data, form) => {
                     ajax.jsonRpc(endpoint, 'call', data).then(function (result) {
+                        form[0].reset();
                         location.reload();
                     });
                 };
@@ -42,7 +43,7 @@ function (require) {
                 $('#creer').on('submit', function (ev) {
                     ev.preventDefault();
                     var name = $('#name').val();
-                    handleSubmit('/creer_alliment', {'name': name,})
+                    handleSubmit('/creer_alliment', {'name': name,}, $(this))
                 });
 
                 //Modifier
@@ -50,14 +51,14 @@ function (require) {
                     ev.preventDefault();
                     var new_id = $('#new_id').val();
                     var new_name = $('#new_name').val();
-                    handleSubmit('/modifier_aliment', {'new_id': new_id, 'new_name': new_name})
+                    handleSubmit('/modifier_aliment', {'new_id': new_id, 'new_name': new_name}, $(this))
                 });
 
                 //Delete
                 $('#supprimer').on('submit', function (ev) {
                     ev.preventDefault();
                     var old_id = $('#old_id').val();
-                    handleSubmit('/delete_aliment', {'old_id': old_id})
+                    handleSubmit('/delete_aliment', {'old_id': old_id}, $(this))
                 });
 
                 return $.when(this._super.apply(this, arguments), def);

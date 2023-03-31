@@ -3,6 +3,7 @@ function (require) {
     "use strict";
 
     let sAnimation = require("website.content.snippets.animation");
+    const ajax = require('web.ajax');
 
     sAnimation.registry.aliment =
         sAnimation.Class.extend({
@@ -17,13 +18,10 @@ function (require) {
                 let def = this._rpc({
                     route: "/listeAliment",
                 }).then(function (data) {
-                    if (data.error) {
+                    if (data.error || _.isEmpty(data)) {
                         return;
                     }
 
-                    if (_.isEmpty(data)) {
-                        return;
-                    }
                     var list = $("<ul>");
                     _.each(data.aliments, function (item) {
                         var listItem = $("<li>");
@@ -31,53 +29,35 @@ function (require) {
                         listItem.text(itemText);
                         list.append(listItem);
                     });
-
-                self._eventList.html(list);
+                    self._eventList.html(list);
                 });
+
+                const handleSubmit = (endpoint, data) => {
+                    ajax.jsonRpc(endpoint, 'call', data).then(function (result) {
+                        location.reload();
+                    });
+                };
 
                 //Création
-                var ajax = require('web.ajax');
-
                 $('#creer').on('submit', function (ev) {
-                ev.preventDefault();
-
-                var name = $('#name').val();
-
-                ajax.jsonRpc('/creer_alliment', 'call', {
-                  'name': name,
-                }).then(function (result) {
-                  location.reload();
-                });
+                    ev.preventDefault();
+                    var name = $('#name').val();
+                    handleSubmit('/creer_alliment', {'name': name,})
                 });
 
                 //Modifier
-                var ajax = require('web.ajax');
-
                 $('#modifier').on('submit', function (ev) {
-                ev.preventDefault();
-
-                var new_id = $('#new_id').val();
-                var new_name = $('#new_name').val();
-                ajax.jsonRpc('/modifier_aliment', 'call', {
-                    'new_id': new_id,
-                    'new_name': new_name
-                }).then(function (result) {
-                  location.reload();
-                });
+                    ev.preventDefault();
+                    var new_id = $('#new_id').val();
+                    var new_name = $('#new_name').val();
+                    handleSubmit('/modifier_aliment', {'new_id': new_id, 'new_name': new_name})
                 });
 
                 //Delete
-                var ajax = require('web.ajax');
-
                 $('#supprimer').on('submit', function (ev) {
-                ev.preventDefault();
-
-                var old_id = $('#old_id').val();
-                ajax.jsonRpc('/delete_aliment', 'call', {
-                    'old_id': old_id,
-                }).then(function (result) {
-                  location.reload();
-                });
+                    ev.preventDefault();
+                    var old_id = $('#old_id').val();
+                    handleSubmit('/delete_aliment', {'old_id': old_id})
                 });
 
                 return $.when(this._super.apply(this, arguments), def);

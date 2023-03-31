@@ -10,9 +10,6 @@
                     <group>
                         <field name="name" />
                     </group>
-                    <!--<group>
-                        <field name="model_1" />
-                    </group>-->
                 </sheet>
             </form>
         </field>
@@ -25,9 +22,6 @@
         <field name="arch" type="xml">
             <graph string="Demo model 2 internal">
                 <field name="name" type="row" />
-<!--
-                <field name="model_1" type="row" />
--->
             </graph>
         </field>
     </record>
@@ -39,7 +33,6 @@
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile">
                 <field name="name" />
-                <!--<field name="model_1" />-->
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
@@ -50,11 +43,6 @@
                                             <field name="name" />
                                         </strong>
                                     </li>
-                                    <!--<li class="mb4">
-                                        <strong>
-                                            <field name="model_1" />
-                                        </strong>
-                                    </li>-->
                                 </ul>
                             </div>
                         </div>
@@ -71,7 +59,6 @@
         <field name="arch" type="xml">
             <pivot string="Demo model 2 internal">
                 <field name="name" type="row" />
-               <!-- <field name="model_1" type="row" />-->
             </pivot>
         </field>
     </record>
@@ -83,9 +70,6 @@
         <field name="arch" type="xml">
             <search string="Demo model 2 internal">
                 <filter domain="[('name','!=',False)]" name="name" string="Name" />
-<!--
-                <filter domain="[('model_1','!=',False)]" name="model_1" string="Model 1" />
--->
             </search>
         </field>
     </record>
@@ -97,9 +81,6 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name" />
-<!--
-                <field name="model_1" />
--->
             </tree>
         </field>
     </record>

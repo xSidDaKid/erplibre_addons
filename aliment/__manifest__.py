@@ -10,6 +10,8 @@
     "data": [
         "security/ir.model.access.csv",
         "views/snippets.xml",
+        "views/aliment_internal.xml",
+        "views/menu.xml",
     ],
     "installable": True,
 }

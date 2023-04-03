@@ -8,7 +8,7 @@
 
                 <div class="column">
                     <h1>Ajouter un aliment</h1>
-                    <form id="creer" style="padding: 20px;">
+                    <form id="creer" style="padding: 20px;" class="flippable">
                         <label for="fname">Name:</label>
                         <br/>
                         <input type="text" name="name" id="name"/>

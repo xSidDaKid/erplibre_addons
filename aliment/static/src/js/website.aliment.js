@@ -8,6 +8,13 @@ function (require) {
     sAnimation.registry.aliment =
         sAnimation.Class.extend({
             selector: ".o_aliment",
+            read_events: {
+              'click #creer': '_toggleFlip',
+            },
+
+            _toggleFlip: function (ev) {
+                console.log("Test");
+            },
 
             start: function () {
                 let self = this;

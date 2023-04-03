@@ -8,13 +8,29 @@ function (require) {
     sAnimation.registry.aliment =
         sAnimation.Class.extend({
             selector: ".o_aliment",
-            read_events: {
-              'click #creer': '_toggleFlip',
+/*            read_events: {
+              //'submit #creer': '_toggleForm',
             },
 
-            _toggleFlip: function (ev) {
-                console.log("Test");
-            },
+            _toggleForm: function (event) {
+                let self = this;
+                event.preventDefault();
+                event.stopPropagation();
+
+                let result = self._onChangeConfigStep(event, false);
+                if (result) {
+                    result.then(function (data) {
+                        if (data) {
+                            if (data.next_step) {
+                                self._openNextStep(data.next_step);
+                            };
+                            if (data.redirect_url) {
+                                window.location = data.redirect_url;
+                            };
+                        };
+                    });
+                }
+            },*/
 
             start: function () {
                 let self = this;
@@ -29,10 +45,10 @@ function (require) {
                         return;
                     }
 
-                    var list = $("<ul>");
+                    let list = $("<ul>");
                     _.each(data.aliments, function (item) {
-                        var listItem = $("<li>");
-                        var itemText = " (ID: " + item.id + ") " + item.name;
+                        let listItem = $("<li>");
+                        let itemText = " (ID: " + item.id + ") " + item.name;
                         listItem.text(itemText);
                         list.append(listItem);
                     });
@@ -47,24 +63,24 @@ function (require) {
                 };
 
                 //Création
-                $('#creer').on('submit', function (ev) {
+                this.$('#creer').on('submit', function (ev) {
                     ev.preventDefault();
-                    var name = $('#name').val();
+                    let name = $('#name').val();
                     handleSubmit('/creer_alliment', {'name': name,}, $(this))
                 });
 
                 //Modifier
-                $('#modifier').on('submit', function (ev) {
+                this.$('#modifier').on('submit', function (ev) {
                     ev.preventDefault();
-                    var new_id = $('#new_id').val();
-                    var new_name = $('#new_name').val();
+                    let new_id = $('#new_id').val();
+                    let new_name = $('#new_name').val();
                     handleSubmit('/modifier_aliment', {'new_id': new_id, 'new_name': new_name}, $(this))
                 });
 
                 //Delete
-                $('#supprimer').on('submit', function (ev) {
+                this.$('#supprimer').on('submit', function (ev) {
                     ev.preventDefault();
-                    var old_id = $('#old_id').val();
+                    let old_id = $('#old_id').val();
                     handleSubmit('/delete_aliment', {'old_id': old_id}, $(this))
                 });
 

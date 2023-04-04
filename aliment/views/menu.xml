@@ -6,7 +6,7 @@
         id="aliment_app"
         name="Aliment"
         sequence="20"
-        web_icon="aliment_app,static/description/icon.png"
+        web_icon="aliment,static/description/icon.png"
     />
 
     <!--Sub menu-->
